@@ -1,0 +1,56 @@
+# Boxstarter options
+$Boxstarter.RebootOk=$true # Allow reboots?
+$Boxstarter.NoPassword=$False # Is this a machine with no login password?
+$Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a reboot
+
+# Set PS Execution Policy to Unrestricted
+Update-ExecutionPolicy Unrestricted -Force
+
+# Enable RemoteDesktop
+Enable-RemoteDesktop
+
+# Set AC Power Sleep Settings to "Never"
+POWERCFG -change -standby-timeout-ac 0
+
+# Install Chocolatey
+cinst chocolatey
+
+# Set Chocolatey Features
+choco feature enable -n allowGlobalConfirmation
+choco feature enable -n allowEmptyChecksums
+
+# Set Chocolatey Features (old cmdlets)
+#$allowEmptyChecksums = $env:ChocolateyAllowEmptyChecksums
+#$allowEmptyChecksumsSecure = $env:ChocolateyAllowEmptyChecksumsSecure
+
+# Install Boxstarter
+choco install boxstarter
+
+
+
+# Install Standard Applications
+cinst 7zip.install
+cinst ccleaner
+cinst jre8
+cinst silverlight
+cinst adobereader
+cinst firefox
+cinst googlechrome
+
+
+
+# Create Directory "C:\Temp\BoxStarterDownloads"
+MD "C:\Temp"
+MD "C:\Temp\BoxStarterDownloads"
+
+
+# Install Teamviewer 10
+wget "http://download.teamviewer.com/download/version_10x/TeamViewer_Setup.exe" -UseBasicParsing -OutFile "C:\Temp\BoxStarterDownloads\TeamViewer_Setup10.exe"
+C:\Temp\BoxStarterDownloads\TeamViewer_Setup10.exe /S
+
+
+if (Test-PendingReboot) { Invoke-Reboot }
+
+# Update Windows and reboot if necessary
+Install-WindowsUpdate -AcceptEula
+if (Test-PendingReboot) { Invoke-Reboot }
