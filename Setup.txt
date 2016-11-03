@@ -12,17 +12,6 @@ Enable-RemoteDesktop
 # Set AC Power Sleep Settings to "Never"
 POWERCFG -change -standby-timeout-ac 0
 
-# Install Chocolatey
-cinst chocolatey
-
-# Set Chocolatey Features
-choco feature enable -n allowGlobalConfirmation
-choco feature enable -n allowEmptyChecksums
-
-# Set Chocolatey Features (old cmdlets)
-#$allowEmptyChecksums = $env:ChocolateyAllowEmptyChecksums
-#$allowEmptyChecksumsSecure = $env:ChocolateyAllowEmptyChecksumsSecure
-
 # Install Boxstarter
 choco install boxstarter
 
@@ -56,3 +45,15 @@ if (Test-PendingReboot) { Invoke-Reboot }
 # Update Windows and reboot if necessary
 Install-WindowsUpdate -AcceptEula
 if (Test-PendingReboot) { Invoke-Reboot }
+
+
+# Install Chocolatey
+cinst chocolatey
+
+# Set Chocolatey Features
+choco feature enable -n allowGlobalConfirmation
+choco feature enable -n allowEmptyChecksums
+
+# Set Chocolatey Features (old cmdlets)
+#$allowEmptyChecksums = $env:ChocolateyAllowEmptyChecksums
+#$allowEmptyChecksumsSecure = $env:ChocolateyAllowEmptyChecksumsSecure
