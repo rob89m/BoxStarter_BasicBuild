@@ -30,12 +30,14 @@ choco install boxstarter
 
 # Install Standard Applications
 cinst 7zip.install
+cinst adobereader
 cinst ccleaner
+cinst dotnet4.6.2
+cinst firefox
+cinst googlechrome 
 cinst jre8
 cinst silverlight
-cinst adobereader
-cinst firefox
-cinst googlechrome
+
 
 
 
