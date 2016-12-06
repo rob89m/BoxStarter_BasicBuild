@@ -9,9 +9,6 @@ Update-ExecutionPolicy Unrestricted -Force
 # Enable RemoteDesktop
 Enable-RemoteDesktop
 
-# Set AC Power Sleep Settings to "Never"
-POWERCFG -change -standby-timeout-ac 0
-
 # Install Boxstarter
 choco install boxstarter
 
@@ -46,16 +43,9 @@ if (Test-PendingReboot) { Invoke-Reboot }
 Install-WindowsUpdate -AcceptEula
 if (Test-PendingReboot) { Invoke-Reboot }
 
-# Download Windows 10 Upgrade Utility
-wget "https://download.microsoft.com/download/0/4/7/047889D0-578C-4A44-A38F-7F30A6CB3809/current-version/Windows10Upgrade9252.exe" -UseBasicParsing -OutFile "$HOME\Desktop\Windows10Upgrade9252.exe"
-
 # Install Chocolatey
 cinst chocolatey
 
 # Set Chocolatey Features
 choco feature enable -n allowGlobalConfirmation
 choco feature enable -n allowEmptyChecksums
-
-# Set Chocolatey Features (old cmdlets)
-#$allowEmptyChecksums = $env:ChocolateyAllowEmptyChecksums
-#$allowEmptyChecksumsSecure = $env:ChocolateyAllowEmptyChecksumsSecure
