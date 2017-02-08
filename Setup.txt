@@ -25,7 +25,8 @@ cup googlechrome
 cup jre8
 cup silverlight
 cup plexmediaserver
-cup plex-home-theater 
+cup plex-home-theater
+cup dashlane
 
 
 
