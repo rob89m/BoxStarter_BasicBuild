@@ -6,7 +6,7 @@ $Boxstarter.AutoLogin=$true # Save my password securely and auto-login after a r
 # Set PS Execution Policy to Unrestricted
 Update-ExecutionPolicy Unrestricted -Force
 
-# Enable RemoteDesktop
+# Enable 
 Enable-RemoteDesktop
 
 # Set AC Power Sleep Settings to "Never"
@@ -15,18 +15,17 @@ POWERCFG -change -standby-timeout-ac 0
 # Install Boxstarter
 choco install boxstarter
 
-
-
 # Install Standard Applications
-cinst 7zip.install
-cinst adobereader
-# cinst ccleaner
-cinst dotnet4.6.2
-cinst firefox
-cinst googlechrome 
-cinst jre8
-cinst silverlight
-
+cup 7zip.install
+cup adobereader
+cup ccleaner
+cup dotnet4.6.2
+cup firefox
+cup googlechrome 
+cup jre8
+cup silverlight
+cup plexmediaserver
+cup plex-home-theater 
 
 
 
